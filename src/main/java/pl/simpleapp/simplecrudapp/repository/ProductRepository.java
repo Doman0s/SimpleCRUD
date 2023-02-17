@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Repository
 public class ProductRepository {
 
-    private List<Product> list = new ArrayList<Product>();
+    private List<Product> list = new ArrayList<>();
 
     public void createProducts() {
         list = List.of(
@@ -25,9 +25,9 @@ public class ProductRepository {
     }
 
     public Product findById(int id) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                return list.get(i);
+        for (Product product : list) {
+            if (product.getId() == id) {
+                return product;
             }
         }
         return null;

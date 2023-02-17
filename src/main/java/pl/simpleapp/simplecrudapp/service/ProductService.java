@@ -25,9 +25,12 @@ public class ProductService {
         return repository.findById(id);
     }
 
+    public List<Product> searchByName(String name) {
+        return repository.search(name);
+    }
+
     public String deleteProduct(int id) {
-        repository.delete(id);
-        return "product removed!" + id;
+        return repository.delete(id);
     }
 
     public Product updateProduct(Product product) {

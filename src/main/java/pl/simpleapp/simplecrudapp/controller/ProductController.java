@@ -8,7 +8,7 @@ import pl.simpleapp.simplecrudapp.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/app")
 public class ProductController {
 
     @Autowired
@@ -19,14 +19,19 @@ public class ProductController {
         return service.saveProduct(product);
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public List<Product> findAllProducts() {
         return service.getProducts();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/find/product/{id}")
     public Product findProductById(@PathVariable int id) {
         return service.getProductById(id);
+    }
+
+    @GetMapping("/find/products/{name}")
+    public List<Product> findProductByName(@PathVariable String name) {
+        return service.searchByName(name);
     }
 
     @PutMapping
